@@ -20,6 +20,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ExoPlayerActivity::class.java)
             startActivity(intent)
         }
+        binding.playButton2.setOnClickListener{
+            val intent = Intent(this, VideoSlideActivity::class.java)
+            startActivity(intent)
+        }
+        binding.playButton3.setOnClickListener{ // 위아래 슬라이드 컨트롤
+            val intent = Intent(this, VerticalViewPagerActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 

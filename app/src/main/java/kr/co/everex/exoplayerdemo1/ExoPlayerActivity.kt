@@ -33,6 +33,7 @@ import com.google.android.exoplayer2.Player.EventListener as Exoplayer2PlayerEve
 class ExoPlayerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExoPlayerBinding
 
+    val a = 1
 
     var simpleExoPlayer: SimpleExoPlayer? = null
 
@@ -50,8 +51,8 @@ class ExoPlayerActivity : AppCompatActivity() {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
             window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
         // 풀스크린 버튼 설정
@@ -59,30 +60,29 @@ class ExoPlayerActivity : AppCompatActivity() {
         val videoUri = Uri.parse("https://i.imgur.com/7bMqysJ.mp4")
 
 
-
         val loadControl: LoadControl = DefaultLoadControl()
-        val bandwidthMeter : BandwidthMeter = DefaultBandwidthMeter()
+        val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
 
         /** TrackSelector
-         SimpleExoPlayer 생성 과정에서 두번째 인자로 전달된 클래스는 영상의 Track 정보를 세팅하는 역할을 한다.
-         이 정보라면 예를 들면 선호하는 오디오 언어는 어떤 것인지, 비디오 사이즈는 무엇인지,
-         비디오 bitrate는 어떤 것으로 할지 등등 이런 것들을 말한다.
-         이것도 Renderer와 동일하게 따로 커스터마이즈 할 수 있긴 하나 특별한 이유가 없다면,
-         라이브러리에서 기본으로 만들어 둔 것을 쓰는게 가장 좋다.
+        SimpleExoPlayer 생성 과정에서 두번째 인자로 전달된 클래스는 영상의 Track 정보를 세팅하는 역할을 한다.
+        이 정보라면 예를 들면 선호하는 오디오 언어는 어떤 것인지, 비디오 사이즈는 무엇인지,
+        비디오 bitrate는 어떤 것으로 할지 등등 이런 것들을 말한다.
+        이것도 Renderer와 동일하게 따로 커스터마이즈 할 수 있긴 하나 특별한 이유가 없다면,
+        라이브러리에서 기본으로 만들어 둔 것을 쓰는게 가장 좋다.
          */
         val trackSelector: TrackSelector = DefaultTrackSelector(
-            AdaptiveTrackSelection.Factory(bandwidthMeter)
+                AdaptiveTrackSelection.Factory(bandwidthMeter)
         )
 
         simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(
-            applicationContext, trackSelector, loadControl
+                applicationContext, trackSelector, loadControl
         )
         val factory = DefaultHttpDataSourceFactory(
-            "exoplayer_video"
+                "exoplayer_video"
         )
-        val extractorsFactory : ExtractorsFactory = DefaultExtractorsFactory()
-        val mediaSource : MediaSource = ExtractorMediaSource(
-            videoUri, factory, extractorsFactory, null, null
+        val extractorsFactory: ExtractorsFactory = DefaultExtractorsFactory()
+        val mediaSource: MediaSource = ExtractorMediaSource(
+                videoUri, factory, extractorsFactory, null, null
         )
 
         // 플레이어 세팅
@@ -94,8 +94,8 @@ class ExoPlayerActivity : AppCompatActivity() {
         // 준비 되었을때 자동 실행
         simpleExoPlayer!!.playWhenReady = true
 
-        simpleExoPlayer!!.addListener(object: Player.EventListener{
-//            override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
+        simpleExoPlayer!!.addListener(object : Player.EventListener {
+            //            override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
 //            override fun onSeekProcessed() {}
 //            override fun onTracksChanged(trackGroups: TrackGroupArray?, trackSelections: TrackSelectionArray?) {}
 //            override fun onPlayerError(error: ExoPlaybackException?) {} override fun onLoadingChanged(isLoading: Boolean) {}
@@ -108,19 +108,19 @@ class ExoPlayerActivity : AppCompatActivity() {
                 if (playbackState == Player.STATE_BUFFERING) {
                     // 버퍼링 할때, progress 바를 보여준다.
                     binding.progressBar.visibility = View.VISIBLE
-                }else if (playbackState == Player.STATE_READY){
+                } else if (playbackState == Player.STATE_READY) {
                     // 준비할때,  progress 바를 숨긴다.
                     binding.progressBar.visibility = View.GONE
                 }
             }
         })
 
-        btfullScreen.setOnClickListener{
-            if(flag){ // flag = true 경우, 풀스크린
+        btfullScreen.setOnClickListener {
+            if (flag) { // flag = true 경우, 풀스크린
                 btfullScreen.setImageDrawable(resources.getDrawable(R.drawable.ic_fullscreen))
                 requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
                 flag = false
-            } else{
+            } else {
                 btfullScreen.setImageDrawable(resources.getDrawable(R.drawable.ic_fullscreen_exit))
                 requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
                 flag = true
@@ -136,6 +136,7 @@ class ExoPlayerActivity : AppCompatActivity() {
         // Get playback state
         simpleExoPlayer?.playbackState
     }
+
     override fun onRestart() {
         super.onRestart()
         // 준비되면 바로 재생

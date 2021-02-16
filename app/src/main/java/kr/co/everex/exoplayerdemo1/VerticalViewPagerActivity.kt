@@ -1,9 +1,13 @@
 package kr.co.everex.exoplayerdemo1
 
+import android.animation.Animator
+import android.animation.TimeInterpolator
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -52,6 +56,18 @@ class VerticalViewPagerActivity : AppCompatActivity() {
                 launchHomeScreen()
             }
         }
+        binding.buttonPrevious.setOnClickListener { v ->
+            // checking for last page
+            // if last page home screen will be launched
+            val current: Int = getItem(-1)
+            if (current >= 0) {
+                // move to previous screen
+                binding.viewPager.currentItem = current
+            } else {
+                launchHomeScreen()
+            }
+        }
+
     }// 초기화 종료
 
 

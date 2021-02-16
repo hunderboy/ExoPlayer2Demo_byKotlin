@@ -7,37 +7,49 @@
     tools:context=".VideoSlideActivity">
 
 
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/player_view"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_slide_video"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
 
-        android:background="@android:color/background_dark"
-        app:controller_layout_id="@layout/custom_controller"
-        app:fastforward_increment="10000"
-        app:hide_on_touch="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:player_layout_id="@layout/exo_simple_player_view"
-        app:resize_mode="fit"
-        app:rewind_increment="10000"
-        app:show_timeout="5000"
-        app:use_controller="true">
-
-    </com.google.android.exoplayer2.ui.PlayerView>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/progress_bar_inSlide"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_centerInParent="true"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/player_view" />
+        app:layout_constraintTop_toTopOf="@+id/view_pager_slide_video" />
+
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="다음"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_previous"
+        app:layout_constraintTop_toBottomOf="@+id/view_pager_slide_video" />
+
+    <Button
+        android:id="@+id/button_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="이전"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_pager_slide_video" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

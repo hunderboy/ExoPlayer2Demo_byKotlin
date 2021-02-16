@@ -123,14 +123,17 @@ class ExoPlayerFragment : Fragment() {
 
 
 
-
-
-    override fun onPause() {
-        super.onPause()
+    fun stopVideo(){
         // 준비 할때 비디오를 중단 시킨다
         simpleExoPlayer?.playWhenReady = false
         // Get playback state
         simpleExoPlayer?.playbackState
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        stopVideo()
     }
 
     override fun onResume() {

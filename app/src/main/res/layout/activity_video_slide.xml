@@ -8,7 +8,7 @@
 
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager_slide_video"
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view_pager_slide_video" />
+        app:layout_constraintTop_toTopOf="@+id/view_pager" />
 
 
     <Button
@@ -38,7 +38,7 @@
         android:text="다음"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_previous"
-        app:layout_constraintTop_toBottomOf="@+id/view_pager_slide_video" />
+        app:layout_constraintTop_toBottomOf="@+id/view_pager" />
 
     <Button
         android:id="@+id/button_previous"
@@ -48,7 +48,7 @@
         android:text="이전"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_pager_slide_video" />
+        app:layout_constraintTop_toBottomOf="@+id/view_pager" />
 
 
 

@@ -40,10 +40,12 @@ class VideoSlideActivity : AppCompatActivity() {
         binding.viewPager.adapter = mAdapter
         binding.viewPager.registerOnPageChangeCallback(pageChangeCallback)
         binding.viewPager.orientation = ViewPager2.ORIENTATION_VERTICAL
+        binding.viewPager.isUserInputEnabled = false // 터치 컨트롤 불가
+
 
         binding.btnNext.setOnClickListener { v -> // 다음
             // ExoPlayerFragment 의 영상을 일시정지 및 초기화 시켜야 한다.
-            videoFragmentList[0].stopVideo()
+//            videoFragmentList[0].stopVideo()
             slideNextPage()
         }
         binding.buttonPrevious.setOnClickListener { v -> // 이전
@@ -83,7 +85,6 @@ class VideoSlideActivity : AppCompatActivity() {
     var pageChangeCallback: OnPageChangeCallback = object : OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
-            Toast.makeText(applicationContext, "포지션 = $position", Toast.LENGTH_SHORT).show()
         }
     }
 

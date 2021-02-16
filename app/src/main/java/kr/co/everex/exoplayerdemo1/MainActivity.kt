@@ -28,6 +28,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, VerticalViewPagerActivity::class.java)
             startActivity(intent)
         }
+        binding.playButton4.setOnClickListener{ // 1개의 Player에서 영상변경 하기
+            val intent = Intent(this, OnePlayerActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
     }

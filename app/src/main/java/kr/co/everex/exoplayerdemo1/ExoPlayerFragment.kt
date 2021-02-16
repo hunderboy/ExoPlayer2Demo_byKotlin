@@ -5,9 +5,11 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageView
+import android.widget.Toast
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.extractor.ExtractorsFactory
@@ -139,5 +141,10 @@ class ExoPlayerFragment : Fragment() {
         simpleExoPlayer?.playbackState
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Toast.makeText(activity, "Fragment onDestroy() 호출", Toast.LENGTH_SHORT).show()
+        Log.e("ExoPlayerFragment : ","onDestroy() 호출")
+    }
 
 }

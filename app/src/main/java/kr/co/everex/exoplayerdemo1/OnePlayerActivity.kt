@@ -67,14 +67,17 @@ class OnePlayerActivity : AppCompatActivity() {
             "exoplayer_video"
         )
         val extractorsFactory: ExtractorsFactory = DefaultExtractorsFactory()
-        val mediaSource: MediaSource = ExtractorMediaSource(
-            videoUri, factory, extractorsFactory, null, null
-        )
+
 
         // 플레이어 세팅
         binding.playerView.player = simpleExoPlayer
         // keep Screen On
         binding.playerView.keepScreenOn = true
+
+
+        val mediaSource: MediaSource = ExtractorMediaSource(
+            videoUri, factory, extractorsFactory, null, null
+        )
         // 미디어 준비
         simpleExoPlayer!!.prepare(mediaSource)
         // 준비 되었을때 자동 실행
@@ -92,6 +95,7 @@ class OnePlayerActivity : AppCompatActivity() {
             }
         })
 
+        // 풀스크린 버튼
         btfullScreen.setOnClickListener {
             if (flag) { // flag = true 경우, 풀스크린
                 btfullScreen.setImageDrawable(resources.getDrawable(R.drawable.ic_fullscreen))
@@ -132,6 +136,7 @@ class OnePlayerActivity : AppCompatActivity() {
         val mediaSource: MediaSource = ExtractorMediaSource(
             videoUri, factory, extractorsFactory, null, null
         )
+        // 미디어 준비
         simpleExoPlayer!!.prepare(mediaSource)
         // 준비 되었을때 자동 실행
         simpleExoPlayer!!.playWhenReady = true

@@ -44,6 +44,10 @@ class ExoPlayerActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view) // 뷰 바인딩 적용 완료
 
+
+        /**
+         * Exoplyer ----------------------------------------------------------------------------------------
+         */
         // 풀스크린 설정
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -56,18 +60,45 @@ class ExoPlayerActivity : AppCompatActivity() {
         }
         // 풀스크린 버튼 설정
         val btfullScreen = binding.playerView.findViewById<ImageView>(R.id.bt_fullscreen)
+
+
+//        val uri = Uri.parse("android.resource://$packageName/raw/sample")
+//        val uri = Uri.parse("android.resource://sample_video/sampleVideo1.mp4")
         val videoUri = Uri.parse("https://i.imgur.com/7bMqysJ.mp4")
 
+
+////        val path = Environment.getExternalStorageDirectory().absolutePath; // 기본적인 절대경로 얻어오기
+//        val path = "/storage/self/primary"
+//        val videoUri = Uri.parse("$path/sample_video/sampleVideo1.mp4")
+//        // 절대 경로 = SDCard 폴더 = "stroage/emulated/0"
+//        //          ** 이 경로는 폰마다 다를수 있습니다.**
+//        // 외부메모리의 파일에 접근하기 위한 권한이 필요 AndroidManifest.xml에 등록
+//        Log.e("test", "절대 경로 : $path")
+//
+//
+//        val playerView = findViewById<PlayerView>(R.id.player_view)
+//        val player = ExoPlayerFactory.newSimpleInstance(this)
+//        // Bind the player to the view.
+//        playerView.player = player
+//        // Produces DataSource instances through which media data is loaded.
+//        val dataSourceFactory: DataSource.Factory =
+//            DefaultDataSourceFactory(this, Util.getUserAgent(this, "yourApplicationName"))
+//        // This is the MediaSource representing the media to be played.
+//        val firstSource: MediaSource = ExtractorMediaSource.Factory(dataSourceFactory)
+//            .createMediaSource(RawResourceDataSource.buildRawResourceUri(R.raw.dog))
+//        // Prepare the player with the source.
+//        player.prepare(firstSource)
 
         val loadControl: LoadControl = DefaultLoadControl()
         val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
 
-        /** TrackSelector
-        SimpleExoPlayer 생성 과정에서 두번째 인자로 전달된 클래스는 영상의 Track 정보를 세팅하는 역할을 한다.
-        이 정보라면 예를 들면 선호하는 오디오 언어는 어떤 것인지, 비디오 사이즈는 무엇인지,
-        비디오 bitrate는 어떤 것으로 할지 등등 이런 것들을 말한다.
-        이것도 Renderer와 동일하게 따로 커스터마이즈 할 수 있긴 하나 특별한 이유가 없다면,
-        라이브러리에서 기본으로 만들어 둔 것을 쓰는게 가장 좋다.
+        /**
+        TrackSelector
+            SimpleExoPlayer 생성 과정에서 두번째 인자로 전달된 클래스는 영상의 Track 정보를 세팅하는 역할을 한다.
+            이 정보라면 예를 들면 선호하는 오디오 언어는 어떤 것인지, 비디오 사이즈는 무엇인지,
+            비디오 bitrate는 어떤 것으로 할지 등등 이런 것들을 말한다.
+            이것도 Renderer와 동일하게 따로 커스터마이즈 할 수 있긴 하나 특별한 이유가 없다면,
+            라이브러리에서 기본으로 만들어 둔 것을 쓰는게 가장 좋다.
          */
         val trackSelector: TrackSelector = DefaultTrackSelector(
                 AdaptiveTrackSelection.Factory(bandwidthMeter)

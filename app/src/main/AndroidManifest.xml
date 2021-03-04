@@ -10,8 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ExoPlayerDemo1">
-        <activity android:name=".OnePlayerActivity"></activity>
+        android:theme="@style/MaterialAppThemeDarkActionBar">
+        <activity android:name=".FullscreenActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+
+            ></activity>
+        <activity android:name=".OnePlayerActivity" />
         <activity android:name=".VerticalViewPagerActivity" />
         <activity android:name=".VideoSlideActivity" />
         <activity

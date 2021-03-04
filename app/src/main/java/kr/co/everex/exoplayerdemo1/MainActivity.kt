@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.playButton2.setOnClickListener{
-            val intent = Intent(this, VideoSlideActivity::class.java)
+            val intent = Intent(this, FullscreenActivity::class.java)
             startActivity(intent)
         }
         binding.playButton3.setOnClickListener{ // 위아래 슬라이드 컨트롤

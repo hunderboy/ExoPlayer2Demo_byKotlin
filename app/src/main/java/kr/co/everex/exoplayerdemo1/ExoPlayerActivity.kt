@@ -64,7 +64,8 @@ class ExoPlayerActivity : AppCompatActivity() {
 
 //        val uri = Uri.parse("android.resource://$packageName/raw/sample")
 //        val uri = Uri.parse("android.resource://sample_video/sampleVideo1.mp4")
-        val videoUri = Uri.parse("https://i.imgur.com/7bMqysJ.mp4")
+//        val videoUri = Uri.parse("https://i.imgur.com/7bMqysJ.mp4")
+        val videoUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/smartkneewalk.appspot.com/o/videos%2F%EC%83%98%ED%94%8C_%EB%8B%88%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C.mp4?alt=media&token=721934ba-f035-44c5-9795-a2ec9dc3dda3")
 
 
 ////        val path = Environment.getExternalStorageDirectory().absolutePath; // 기본적인 절대경로 얻어오기

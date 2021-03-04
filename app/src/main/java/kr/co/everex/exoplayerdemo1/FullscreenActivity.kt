@@ -19,7 +19,6 @@ import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelector
-import com.google.android.exoplayer2.ui.PlayerControlView
 import com.google.android.exoplayer2.upstream.BandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
@@ -45,7 +44,7 @@ class FullscreenActivity : AppCompatActivity() {
         /**
          * Exoplyer ----------------------------------------------------------------------------------------
          */
-        val btfullScreen = binding.playerView.findViewById<ImageView>(R.id.bt_fullscreen)
+        val btfullScreen = binding.playerView.findViewById<ImageView>(R.id.bt_fullscreen_ver2)
         val videoUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/smartkneewalk.appspot.com/o/videos%2F%EC%83%98%ED%94%8C_%EB%8B%88%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C.mp4?alt=media&token=721934ba-f035-44c5-9795-a2ec9dc3dda3")
 
         val loadControl: LoadControl = DefaultLoadControl()

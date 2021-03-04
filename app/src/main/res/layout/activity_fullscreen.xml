@@ -14,7 +14,7 @@
         android:layout_marginTop="40dp"
         android:background="@android:color/background_dark"
 
-        app:controller_layout_id="@layout/custom_controller"
+        app:controller_layout_id="@layout/custom_controller_ver2"
         app:fastforward_increment="10000"
         app:hide_on_touch="true"
         app:layout_constraintEnd_toEndOf="parent"

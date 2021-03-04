@@ -13,4 +13,17 @@
 
     </style>
 
+
+    <style name="TextStyle_ExplainFindPassword">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:letterSpacing">
+            0.03
+        </item>
+        <item name="android:textColor">
+            #ffffff
+        </item>
+    </style>
+
 </resources>

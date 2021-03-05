@@ -17,14 +17,15 @@
         app:controller_layout_id="@layout/custom_controller_ver2"
         app:fastforward_increment="10000"
         app:hide_on_touch="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:player_layout_id="@layout/exo_simple_player_view"
         app:resize_mode="fit"
         app:rewind_increment="10000"
         app:show_timeout="5000"
-        app:use_controller="true">
+        app:use_controller="true"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
     </com.google.android.exoplayer2.ui.PlayerView>
 
     <ProgressBar

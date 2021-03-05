@@ -13,7 +13,9 @@
         android:theme="@style/MaterialAppThemeDarkActionBar">
         <activity
             android:name=".FullscreenActivity"
+
             android:configChanges="keyboardHidden|orientation|screenSize" />
+<!--        android:screenOrientation="portrait"-->
 
         <activity android:name=".OnePlayerActivity" />
         <activity android:name=".VerticalViewPagerActivity" />

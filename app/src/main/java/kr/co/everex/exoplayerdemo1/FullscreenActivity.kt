@@ -2,6 +2,7 @@ package kr.co.everex.exoplayerdemo1
 
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.util.TypedValue
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.exoplayer2.*
@@ -19,6 +21,7 @@ import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelector
+import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.BandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
@@ -32,7 +35,7 @@ class FullscreenActivity : AppCompatActivity() {
     private var flag = false
 
     var fullscreen = false
-
+    var btfullScreen: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,7 @@ class FullscreenActivity : AppCompatActivity() {
         /**
          * Exoplyer ----------------------------------------------------------------------------------------
          */
-        val btfullScreen = binding.playerView.findViewById<ImageView>(R.id.bt_fullscreen_ver2)
+        btfullScreen = binding.playerView.findViewById(R.id.bt_fullscreen_ver2)
         val videoUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/smartkneewalk.appspot.com/o/videos%2F%EC%83%98%ED%94%8C_%EB%8B%88%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C.mp4?alt=media&token=721934ba-f035-44c5-9795-a2ec9dc3dda3")
 
         val loadControl: LoadControl = DefaultLoadControl()
@@ -98,9 +101,9 @@ class FullscreenActivity : AppCompatActivity() {
 //        binding.playerView.controllerAutoShow = false
         binding.playerView.hideController()
 
-        btfullScreen.setOnClickListener{
+        btfullScreen?.setOnClickListener{
             if (fullscreen) {
-                btfullScreen.setImageDrawable(
+                btfullScreen?.setImageDrawable(
                     ContextCompat.getDrawable(
                         this,
                         R.drawable.ic_fullscreen
@@ -115,7 +118,7 @@ class FullscreenActivity : AppCompatActivity() {
                 binding.playerView.margin(top = 40F)
                 fullscreen = false
             } else {
-                btfullScreen.setImageDrawable(
+                btfullScreen?.setImageDrawable(
                     ContextCompat.getDrawable(
                         this,
                         R.drawable.ic_fullscreen_exit
@@ -143,6 +146,49 @@ class FullscreenActivity : AppCompatActivity() {
 
     }// onCreate 끝
 
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation === Configuration.ORIENTATION_LANDSCAPE) {
+//            Toast.makeText(this, "가로모드", Toast.LENGTH_SHORT).show()
+
+            btfullScreen?.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_fullscreen_exit
+                )
+            )
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
+            val params = binding.playerView.layoutParams
+            params.width = MATCH_PARENT
+            params.height = MATCH_PARENT
+            binding.playerView.layoutParams = params
+            binding.playerView.margin(top = 0F)
+            fullscreen = true
+
+        } else if (newConfig.orientation === Configuration.ORIENTATION_PORTRAIT) {
+//            Toast.makeText(this, "세로모드", Toast.LENGTH_SHORT).show()
+
+            btfullScreen?.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_fullscreen
+                )
+            )
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            val params = binding.playerView.layoutParams
+            params.width = MATCH_PARENT
+            params.height =  ((230 * applicationContext.resources.displayMetrics.density).toInt())
+            binding.playerView.layoutParams = params
+            binding.playerView.margin(top = 40F)
+            fullscreen = false
+        }
+    }
 
 
     override fun onPause() {

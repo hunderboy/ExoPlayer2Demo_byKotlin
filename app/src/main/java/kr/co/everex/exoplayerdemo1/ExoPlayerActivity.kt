@@ -61,34 +61,19 @@ class ExoPlayerActivity : AppCompatActivity() {
         // 풀스크린 버튼 설정
         val btfullScreen = binding.playerView.findViewById<ImageView>(R.id.bt_fullscreen)
 
-
-//        val uri = Uri.parse("android.resource://$packageName/raw/sample")
-//        val uri = Uri.parse("android.resource://sample_video/sampleVideo1.mp4")
-//        val videoUri = Uri.parse("https://i.imgur.com/7bMqysJ.mp4")
-        val videoUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/smartkneewalk.appspot.com/o/videos%2F%EC%83%98%ED%94%8C_%EB%8B%88%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C.mp4?alt=media&token=721934ba-f035-44c5-9795-a2ec9dc3dda3")
+        val DefaultTimeBar = binding.playerView.findViewById<com.google.android.exoplayer2.ui.DefaultTimeBar>(R.id.exo_progress)
+        DefaultTimeBar.
 
 
-////        val path = Environment.getExternalStorageDirectory().absolutePath; // 기본적인 절대경로 얻어오기
-//        val path = "/storage/self/primary"
-//        val videoUri = Uri.parse("$path/sample_video/sampleVideo1.mp4")
-//        // 절대 경로 = SDCard 폴더 = "stroage/emulated/0"
-//        //          ** 이 경로는 폰마다 다를수 있습니다.**
-//        // 외부메모리의 파일에 접근하기 위한 권한이 필요 AndroidManifest.xml에 등록
-//        Log.e("test", "절대 경로 : $path")
-//
-//
-//        val playerView = findViewById<PlayerView>(R.id.player_view)
-//        val player = ExoPlayerFactory.newSimpleInstance(this)
-//        // Bind the player to the view.
-//        playerView.player = player
-//        // Produces DataSource instances through which media data is loaded.
-//        val dataSourceFactory: DataSource.Factory =
-//            DefaultDataSourceFactory(this, Util.getUserAgent(this, "yourApplicationName"))
-//        // This is the MediaSource representing the media to be played.
-//        val firstSource: MediaSource = ExtractorMediaSource.Factory(dataSourceFactory)
-//            .createMediaSource(RawResourceDataSource.buildRawResourceUri(R.raw.dog))
-//        // Prepare the player with the source.
-//        player.prepare(firstSource)
+        binding.playerView.drawingTime
+
+        /**
+         * 테스트 영상 URI 설정
+         내부 영상 재생시 설정하는 uri path
+        val uri = Uri.parse("android.resource://$packageName/raw/sample")
+        val uri = Uri.parse("android.resource://sample_video/sampleVideo1.mp4")
+         */
+        val videoUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/everexfirebase.appspot.com/o/%E1%84%89%E1%85%A2%E1%86%B7%E1%84%91%E1%85%B3%E1%86%AF_%E1%84%82%E1%85%B5%E1%84%89%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3.mp4?alt=media&token=f576e14a-6edb-4dfe-bae5-9d6f39a274ab")
 
         val loadControl: LoadControl = DefaultLoadControl()
         val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
@@ -126,7 +111,7 @@ class ExoPlayerActivity : AppCompatActivity() {
         simpleExoPlayer!!.playWhenReady = true
 
         simpleExoPlayer!!.addListener(object : Player.EventListener {
-            //            override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
+//            override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
 //            override fun onSeekProcessed() {}
 //            override fun onTracksChanged(trackGroups: TrackGroupArray?, trackSelections: TrackSelectionArray?) {}
 //            override fun onPlayerError(error: ExoPlaybackException?) {} override fun onLoadingChanged(isLoading: Boolean) {}

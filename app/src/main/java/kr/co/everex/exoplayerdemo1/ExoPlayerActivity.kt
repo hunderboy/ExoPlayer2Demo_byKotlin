@@ -62,10 +62,6 @@ class ExoPlayerActivity : AppCompatActivity() {
         val btfullScreen = binding.playerView.findViewById<ImageView>(R.id.bt_fullscreen)
 
         val DefaultTimeBar = binding.playerView.findViewById<com.google.android.exoplayer2.ui.DefaultTimeBar>(R.id.exo_progress)
-        DefaultTimeBar.
-
-
-        binding.playerView.drawingTime
 
         /**
          * 테스트 영상 URI 설정
